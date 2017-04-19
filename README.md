@@ -21,5 +21,5 @@
 
 
 
-     <activity android:name="com.example.gjw.albumlibrary.album.PhotoAlbumActivity"/>
-     <activity android:name="com.example.gjw.albumlibrary.album.FloderActivity"/>
+    <activity android:name="com.example.gjw.albumlibrary.album.PhotoAlbumActivity"/>
+    <activity android:name="com.example.gjw.albumlibrary.album.FloderActivity"/>
