@@ -1,13 +1,13 @@
 # PhotoAlbum
-1
-allprojects {
+
+
+	allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
-  2
-  
-  	dependencies {
+	
+	dependencies {
 		compile 'com.github.User:Repo:Tag'
 	}
