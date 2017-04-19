@@ -9,5 +9,5 @@
 	}
 	
 	dependencies {
-		compile 'com.github.User:Repo:Tag'
+		compile 'com.github.guoGG:PhotoAlbum:1.0.0'
 	}
