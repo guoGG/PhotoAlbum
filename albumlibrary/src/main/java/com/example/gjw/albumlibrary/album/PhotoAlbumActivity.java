@@ -40,10 +40,8 @@ import java.util.Map;
 public class PhotoAlbumActivity extends AppCompatActivity {
     public final static int REQUEST_CODE_FLODER_NAME = 0;
     public final static int REQUEST_CODE_CAMERA = 1;
-    public final static int RESULT_CODE_IMAGE_PATH = 2;
 
     public final static String DEFAULT_ALBUM = "Camera";
-    public final static String BUNDLE_TAG_IMAGES = "IMAGES";
     public final static String BUNDLE_TAG_FLODER = "FLODER";
     public final static String BUNDLE_TAG_FLODER_NAME = "FLODER_NAME";
 
@@ -56,7 +54,6 @@ public class PhotoAlbumActivity extends AppCompatActivity {
     private TextView btSave;
     static Handler handler = null;
     private ArrayList<Images> allSelectImages = new ArrayList<>();
-    public OnResultDatasListener onResultDatasListener;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -160,7 +157,6 @@ public class PhotoAlbumActivity extends AppCompatActivity {
                 allSelectImages.clear();
                 allSelectImages.add(img);
                 //返回一个图片实体集合
-//                setResult(RESULT_CODE_IMAGE_PATH, new Intent().putExtra(BUNDLE_TAG_IMAGES, allSelectImages));
                 DataBus.getInstance().post(allSelectImages);
                 finish();
             } else {
@@ -170,7 +166,6 @@ public class PhotoAlbumActivity extends AppCompatActivity {
                     allSelectImages.clear();
                     allSelectImages.add(img);
                     //返回一个图片实体集合
-//                    setResult(RESULT_CODE_IMAGE_PATH, new Intent().putExtra(BUNDLE_TAG_IMAGES, allSelectImages));
                     DataBus.getInstance().post(allSelectImages);
                     finish();
                 }
@@ -193,6 +188,7 @@ public class PhotoAlbumActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         mImagesData.clear();
+        DataBus.getInstance().clearObserver();
     }
 
 }

@@ -40,4 +40,7 @@ public class DataBus {
         }
     }
 
+    public void clearObserver(){
+        observer.clear();
+    }
 }
