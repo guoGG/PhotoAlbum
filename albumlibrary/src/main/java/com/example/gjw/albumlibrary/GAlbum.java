@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.example.gjw.albumlibrary.album.PhotoAlbumActivity;
+import com.example.gjw.albumlibrary.interfaces.DataBus;
+import com.example.gjw.albumlibrary.interfaces.OnResultDatasListener;
 
 /**
  * Created by guojiawei on 2017/4/18.
@@ -33,10 +35,11 @@ public class GAlbum {
     }
 
 
-    public void open() {
+    public GAlbum open() {
         Intent intent = new Intent();
         intent.setClass(mContext, PhotoAlbumActivity.class);
         mContext.startActivity(intent);
+        return this;
     }
 
     public GAlbum setMaxSelectNum(int maxSelectNum) {
@@ -54,4 +57,8 @@ public class GAlbum {
         return this;
     }
 
+    public GAlbum registerListener(OnResultDatasListener listener) {
+        DataBus.getInstance().register(listener);
+        return this;
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.gjw.albumlibrary.album;
+package com.example.gjw.albumlibrary.interfaces;
 
 import android.view.View;
 

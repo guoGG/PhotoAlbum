@@ -36,7 +36,7 @@ dependencies {
 //添加
 publish {
     userOrg = 'guogg'//bintray.com用户名
-    groupId = 'guogg.album'//jcenter上的路径
+    groupId = 'com.guogg.album'//jcenter上的路径
     artifactId = 'photoalbum'//项目名称
     publishVersion = '1.0.0'//版本号
     desc = 'photoalbum'//描述，不重要

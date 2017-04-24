@@ -1,6 +1,5 @@
 package com.example.gjw.albumlibrary.album;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +10,7 @@ import android.view.View;
 
 import com.example.gjw.albumlibrary.adapter.FloderAdapter;
 import com.example.gjw.albumlibrary.entity.SerMap;
+import com.example.gjw.albumlibrary.interfaces.OnRecyclerViewItemClickListener;
 import com.example.gjw.photoalbum.R;
 
 

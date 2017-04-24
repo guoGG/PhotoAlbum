@@ -3,7 +3,6 @@ package com.example.gjw.albumlibrary.album;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout;
@@ -21,6 +21,9 @@ import com.example.gjw.albumlibrary.GAlbum;
 import com.example.gjw.albumlibrary.adapter.PhotoAdapter;
 import com.example.gjw.albumlibrary.entity.Images;
 import com.example.gjw.albumlibrary.entity.SerMap;
+import com.example.gjw.albumlibrary.interfaces.DataBus;
+import com.example.gjw.albumlibrary.interfaces.OnRecyclerViewItemClickListener;
+import com.example.gjw.albumlibrary.interfaces.OnResultDatasListener;
 import com.example.gjw.albumlibrary.util.AlbumUtils;
 import com.example.gjw.albumlibrary.widget.DividerGridItemDecoration;
 import com.example.gjw.photoalbum.R;
@@ -53,6 +56,7 @@ public class PhotoAlbumActivity extends AppCompatActivity {
     private TextView btSave;
     static Handler handler = null;
     private ArrayList<Images> allSelectImages = new ArrayList<>();
+    public OnResultDatasListener onResultDatasListener;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -118,7 +122,9 @@ public class PhotoAlbumActivity extends AppCompatActivity {
         btSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                allSelectImages.clear();
+                allSelectImages.addAll(photoAlbumAdapter.getCheckedDatas());
+                DataBus.getInstance().post(allSelectImages);
             }
         });
     }
@@ -153,7 +159,8 @@ public class PhotoAlbumActivity extends AppCompatActivity {
                 allSelectImages.clear();
                 allSelectImages.add(img);
                 //返回一个图片实体集合
-                setResult(RESULT_CODE_IMAGE_PATH, new Intent().putExtra(BUNDLE_TAG_IMAGES, allSelectImages));
+//                setResult(RESULT_CODE_IMAGE_PATH, new Intent().putExtra(BUNDLE_TAG_IMAGES, allSelectImages));
+                DataBus.getInstance().post(allSelectImages);
                 finish();
             } else {
                 //如果data为空，则从缓存的地址获取图片信息
@@ -162,7 +169,8 @@ public class PhotoAlbumActivity extends AppCompatActivity {
                     allSelectImages.clear();
                     allSelectImages.add(img);
                     //返回一个图片实体集合
-                    setResult(RESULT_CODE_IMAGE_PATH, new Intent().putExtra(BUNDLE_TAG_IMAGES, allSelectImages));
+//                    setResult(RESULT_CODE_IMAGE_PATH, new Intent().putExtra(BUNDLE_TAG_IMAGES, allSelectImages));
+                    DataBus.getInstance().post(allSelectImages);
                     finish();
                 }
             }
@@ -185,4 +193,5 @@ public class PhotoAlbumActivity extends AppCompatActivity {
         super.onDestroy();
         mImagesData.clear();
     }
+
 }
