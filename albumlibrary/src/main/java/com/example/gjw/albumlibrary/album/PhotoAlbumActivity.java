@@ -125,6 +125,7 @@ public class PhotoAlbumActivity extends AppCompatActivity {
                 allSelectImages.clear();
                 allSelectImages.addAll(photoAlbumAdapter.getCheckedDatas());
                 DataBus.getInstance().post(allSelectImages);
+                finish();
             }
         });
     }
